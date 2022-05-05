@@ -1,0 +1,111 @@
+<nav
+  class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top"
+  style="z-index: 100;"
+>
+  <div class="container-fluid">
+    <div id="widget-navigation" style="visibility: hidden;">
+      <button
+        id="widget-navigation-toggler"
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#widget-navigation-list"
+        aria-controls="widget-navigation-list"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="widget-navigation-list">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="applicationDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Application Widget
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="applicationDropdown">
+              <li><button class="btn dropdown-item" onclick="openWidget('application', '618274079eb6019bfc301540')">App #1</button></li>
+              <li><button class="btn dropdown-item" onclick="openWidget('application', '61a4d9f7de315f07905782e3')">App #2</button></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="dashboardDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Dashboard Widget
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="dashboardDropdown">
+              <li><button class="btn dropdown-item" onclick="openWidget('dashboard', '622a04e53df1b751faed40ac')">Grid</button></li>
+              <li><button class="btn dropdown-item" onclick="openWidget('dashboard', '622a05a13df1b78494ed44b8')">Charts</button></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="formDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Form Widget
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="formDropdown">
+              <li><button class="btn dropdown-item" onclick="openWidget('form', '618a34fad1fcfa33dc78f27a')">Form #1</button></li>
+              <li><button class="btn dropdown-item" onclick="openWidget('form', '622a04923df1b74672ed3edf')">Form #2</button></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link dropdown-toggle"
+              href="#"
+              id="workflowDropdown"
+              role="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Workflow Widget
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="workflowDropdown">
+              <li><button class="btn dropdown-item" onclick="openWidget('workflow', '622a140e3df1b774feed59b3')">Workflow #1</button></li>
+              <li><button class="btn dropdown-item" onclick="openWidget('workflow', '622a05643df1b73a67ed430d')">Workflow #2</button></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="d-flex">
+      <a href="" class="btn btn-primary" id="login">LOGIN</a>
+    </div>
+  </div>
+</nav>
+<div id="main-content" class="container-fluid g-0">
+  <div class="row g-0 h-100 justify-content-end">
+    <nav
+      id="application-navigation"
+      class="col-3 bg-light d-block border-end"
+      style="display: none;"
+    >
+      <div class="position-sticky pt-3">
+        <ul id="application-pages" class="nav flex-column"></ul>
+      </div>
+    </nav>
+    <main id="widget" class="col h-100"></main>
+  </div>
+</div>
+<script type="text/javascript" src="/javascripts/oidc-client.min.js"></script>
+<script type="text/javascript" src="/javascripts/main.js"></script>
+<script type="text/javascript" src="/javascripts/app-builder.js"></script>
+{{!-- <script type="text/javascript" src="https://oort-dev.oortcloud.tech/widgets/app-builder.js"></script> --}}
