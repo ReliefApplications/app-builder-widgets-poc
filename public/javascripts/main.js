@@ -45,9 +45,12 @@ function redirectToLogin(e) {
 function openWidget(widget, id) {
   switch (widget) {
     case "application":
-      document.getElementById("widget").innerHTML =
-        `<application-widget id=${id}></application-widget`;
-      widget = document.querySelector("application-widget");
+      console.log("change of application");
+      console.log(id);
+      document.getElementById(
+        "widget"
+      ).innerHTML = `<apb-application id=${id}></apb-application`;
+      widget = document.querySelector("apb-application");
       widget.addEventListener(
         "pages",
         function (e) {
@@ -55,27 +58,45 @@ function openWidget(widget, id) {
         },
         false
       );
+      widget.addEventListener("filterActive$", function (e) {
+        filterBadge = document.getElementById("filter-badge");
+        if (e.detail) {
+          filterBadge.style.visibility = "visible";
+        } else {
+          filterBadge.style.visibility = "hidden";
+        }
+      });
       break;
     case "dashboard":
-      document.getElementById("widget").innerHTML =
-        `<dashboard-widget id=${id}></dashboard-widget`;
+      document.getElementById(
+        "widget"
+      ).innerHTML = `<dashboard-widget id=${id}></dashboard-widget`;
       widget = document.querySelector("dashboard-widget");
       hideAppNavigation();
       break;
     case "form":
-      document.getElementById("widget").innerHTML =
-        `<form-widget id=${id}></form-widget`;
+      document.getElementById(
+        "widget"
+      ).innerHTML = `<form-widget id=${id}></form-widget`;
       widget = document.querySelector("form-widget");
       hideAppNavigation();
       break;
     case "workflow":
-      document.getElementById("widget").innerHTML =
-        `<workflow-widget id=${id}></workflow-widget`;
+      document.getElementById(
+        "widget"
+      ).innerHTML = `<workflow-widget id=${id}></workflow-widget`;
       widget = document.querySelector("workflow-widget");
       hideAppNavigation();
       break;
     default:
       break;
+  }
+}
+
+function toggleFilter() {
+  widget = document.querySelector("apb-application");
+  if (widget) {
+    widget.toggleFilter = true;
   }
 }
 
@@ -93,6 +114,7 @@ function goToPage(id) {
  * @param {*} pages list of pages
  */
 function setAppNavigation(pages) {
+  console.log("ici");
   html = "";
   for (let page of pages) {
     html += `<li class="nav-item w-100 text-truncate"><button id='${page.id}' class="btn nav-link w-100 text-truncate">${page.name}</button></li>`;
@@ -101,9 +123,9 @@ function setAppNavigation(pages) {
   pagesNavigation = document.getElementById("application-pages");
   pagesNavigation.innerHTML = html;
   widget = document.getElementById("widget");
-  widget.classList.remove('col');
-  widget.classList.add('col-9');
-  navigation.style.display = 'inherit';
+  widget.classList.remove("col");
+  widget.classList.add("col-9");
+  navigation.style.display = "inherit";
   for (let page of pages) {
     button = document.getElementById(page.id);
     button.addEventListener(
@@ -120,10 +142,11 @@ function setAppNavigation(pages) {
  * Removes the app navigation
  */
 function hideAppNavigation() {
-  document.getElementById("application-navigation").style.display = 'none';
+  console.log("hide");
+  document.getElementById("application-navigation").style.display = "none";
   widget = document.getElementById("widget");
-  widget.classList.remove('col-9');
-  widget.classList.add('col');
+  widget.classList.remove("col-9");
+  widget.classList.add("col");
 }
 
 /**
@@ -134,8 +157,8 @@ function processLoginResponse() {
     .signinRedirectCallback()
     .then(function (user, bb) {
       localStorage.setItem("idtoken", user.access_token);
-      document.getElementById("widget-navigation").style.visibility = 'visible';
-      openWidget('application', '618274079eb6019bfc301540');
+      document.getElementById("widget-navigation").style.visibility = "visible";
+      // openWidget('application', '653b7d6e45408fa9b0c85614');
     })
     .catch(function (err) {
       console.log("Error completing auth code + pkce flow", err);

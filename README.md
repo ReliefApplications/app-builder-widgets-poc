@@ -31,7 +31,7 @@ In Angular repository of the front-end, the command `npm run bundle:widgets` wil
 Code must be loaded in a script tag, in html:
 
 ```html
-<script type="text/javascript" src="/javascripts/app-builder.js"></script>
+<script type="text/javascript" src="/app-builder.js"></script>
 ```
 
 The javascript file of Web Components declares four different widgets:

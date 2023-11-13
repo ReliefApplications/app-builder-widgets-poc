@@ -3,7 +3,32 @@
   style="z-index: 100;"
 >
   <div class="container-fluid">
-    <div id="widget-navigation" style="visibility: hidden;">
+    <div id="widget-navigation" class="d-flex" style="visibility: hidden;">
+      <button
+        type="button"
+        class="btn text-light position-relative"
+        onclick="toggleFilter()"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="16"
+          height="16"
+          fill="currentColor"
+          class="bi bi-funnel-fill"
+          viewBox="0 0 16 16"
+        >
+          <path
+            d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2z"
+          />
+        </svg>
+        <span
+          id="filter-badge"
+          class="position-absolute top-0 right-0 badge rounded-circle bg-danger p-1"
+          style="visibility: hidden;"
+        >
+          <span class="visually-hidden">New alerts</span>
+        </span>
+      </button>
       <button
         id="widget-navigation-toggler"
         class="navbar-toggler"
@@ -30,59 +55,14 @@
               Application Widget
             </a>
             <ul class="dropdown-menu" aria-labelledby="applicationDropdown">
-              <li><button class="btn dropdown-item" onclick="openWidget('application', '618274079eb6019bfc301540')">App #1</button></li>
-              <li><button class="btn dropdown-item" onclick="openWidget('application', '61a4d9f7de315f07905782e3')">App #2</button></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="dashboardDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Dashboard Widget
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="dashboardDropdown">
-              <li><button class="btn dropdown-item" onclick="openWidget('dashboard', '622a04e53df1b751faed40ac')">Grid</button></li>
-              <li><button class="btn dropdown-item" onclick="openWidget('dashboard', '622a05a13df1b78494ed44b8')">Charts</button></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="formDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Form Widget
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="formDropdown">
-              {{!-- <li><button class="btn dropdown-item" onclick="openWidget('form', '618a34fad1fcfa33dc78f27a')">Form #1</button></li> --}}
-              <li><button class="btn dropdown-item" onclick="openWidget('form', '620236aa030f3a5e5db78319')">Form</button></li>
-              <li><button class="btn dropdown-item" onclick="openWidget('form', '626b96227ad4dd0c96f3b8a1')">Types Form</button></li>
-              <li><button class="btn dropdown-item" onclick="openWidget('form', '642061d1b7109549fa3035e8')">Geo Form</button></li>
-              <li><button class="btn dropdown-item" onclick="openWidget('form', '61f24d3ec1db91b78f1190bf')">Multiple tabs Form</button></li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              id="workflowDropdown"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              Workflow Widget
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="workflowDropdown">
-              <li><button class="btn dropdown-item" onclick="openWidget('workflow', '622a140e3df1b774feed59b3')">Workflow #1</button></li>
-              <li><button class="btn dropdown-item" onclick="openWidget('workflow', '622a05643df1b73a67ed430d')">Workflow #2</button></li>
+              <li><button
+                  class="btn dropdown-item"
+                  onclick="openWidget('application', '653b7d6e45408fa9b0c85614')"
+                >Sandbox</button></li>
+              <li><button
+                  class="btn dropdown-item"
+                  onclick="openWidget('application', '61a4d9f7de315f07905782e3')"
+                >App #2</button></li>
             </ul>
           </li>
         </ul>
@@ -110,5 +90,5 @@
 </div>
 <script type="text/javascript" src="/javascripts/oidc-client.min.js"></script>
 <script type="text/javascript" src="/javascripts/main.js"></script>
-<script type="text/javascript" src="/javascripts/app-builder.js"></script>
-{{!-- <script type="text/javascript" src="https://oort-dev.oortcloud.tech/widgets/app-builder.js"></script> --}}
+<script type="text/javascript" src="/app-builder.js"></script>
+{{! <script type="text/javascript" src="https://oort-dev.oortcloud.tech/widgets/app-builder.js"></script> }}
