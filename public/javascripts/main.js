@@ -104,9 +104,10 @@ function toggleFilter() {
  * Update the current application page
  * @param {*} id page id
  */
-function goToPage(id) {
-  widget = document.querySelector("application-widget");
-  widget.pageId = id;
+function goToPage(path) {
+  console.log(path);
+  widget = document.querySelector("apb-application");
+  widget.path = path;
 }
 
 /**
@@ -114,28 +115,36 @@ function goToPage(id) {
  * @param {*} pages list of pages
  */
 function setAppNavigation(pages) {
-  console.log("ici");
-  html = "";
-  for (let page of pages) {
-    html += `<li class="nav-item w-100 text-truncate"><button id='${page.id}' class="btn nav-link w-100 text-truncate">${page.name}</button></li>`;
-  }
   navigation = document.getElementById("application-navigation");
   pagesNavigation = document.getElementById("application-pages");
-  pagesNavigation.innerHTML = html;
+  pagesNavigation.innerHTML = '';
+  for (let page of pages) {
+    console.log(page);
+    if (page.visible) {
+      let button = document.createElement("button");
+      button.addEventListener(
+        "click",
+        function () {
+          console.log("teggdf");
+          goToPage(page.path);
+        },
+        false
+      );
+      button.classList.add("btn", "nav-link", "w-100", "text-truncate");
+      button.textContent = page.name;
+
+      let listItem = document.createElement("li");
+      listItem.classList.add("nav-item", "w-100", "text-truncate");
+      listItem.appendChild(button);
+
+      pagesNavigation.appendChild(listItem);
+    }
+  }
+
   widget = document.getElementById("widget");
   widget.classList.remove("col");
   widget.classList.add("col-9");
   navigation.style.display = "inherit";
-  for (let page of pages) {
-    button = document.getElementById(page.id);
-    button.addEventListener(
-      "click",
-      function () {
-        goToPage(page.id);
-      },
-      false
-    );
-  }
 }
 
 /**
