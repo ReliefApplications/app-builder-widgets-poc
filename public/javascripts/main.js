@@ -25,6 +25,9 @@ var settings = {
   loadUserInfo: true,
 };
 var mgr = new Oidc.UserManager(settings);
+mgr.events.addUserLoaded(() => {
+  console.log('UserLoaded hit');
+});
 
 /**
  * Redirect to login
@@ -183,5 +186,14 @@ function processLoginResponse() {
  * Look out for a authentication response, then log it and handle it
  */
 if (window.location.href.indexOf("?") >= 0) {
+  console.log('login response');
   processLoginResponse();
+}
+
+console.log(mgr);
+
+// There is an application to load
+if (id) {
+  openWidget('application', id);
+  widget = document.querySelector("apb-application");
 }
