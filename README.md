@@ -8,6 +8,8 @@ This repository was created for a Proof of Concept, of Angular made Web Componen
 
 Web components presented by this project are created from this [repository](https://github.com/ReliefApplications/oort-frontend).
 
+POC is using Express handlebars.
+
 ## Usage
 
 ### Authentication
@@ -18,54 +20,48 @@ This is handled in the PoC by [oidc-client](https://www.npmjs.com/package/oidc-c
 
 App builder needs to use tokens stored in local storage with key `idtoken`.
 
-The file `main.js` first asks the user to login, redirecting it to login page provided by the system ( in that case, https://id-dev.oortcloud.tech/ ).
+The file `main.js` first asks the user to login, redirecting it to login page provided by the system.
 
 After login, the token will be stored in local storage, and web components will be able to use it. If the token is valid, the API will be able to consume it.
 
 ### Embed Web Components
 
-Web components code is put in `app-builder.js` file. The code is built in the Angular repository.
+Web components code is loaded from a blob storage. The code is built in the Angular repository.
 
 In Angular repository of the front-end, the command `npm run bundle:widgets` will first build the widgets sub-project, and then put all generated files into a single file, that can be distributed.
 
 Code must be loaded in a script tag, in html:
 
 ```html
-<script type="text/javascript" src="/app-builder.js"></script>
+<script type="text/javascript" src="<url>"></script>
 ```
 
-The javascript file of Web Components declares four different widgets:
+### API
 
-- application-widget
-- workflow-widget
-- dashboard-widget
-- form-widget
+When loaded, the code provides a web-element, that allows to load applications generated from the App Builder.
 
-All these widgets can be used as a html tag, like so:
-
+Web element tag is:
 ```html
-<dashboard-widget></dashboard-widget>
+<apb-application></apb-application>
 ```
-
-Each widget then has its own API. API is composed of inputs and outputs.
 
 #### Inputs
+Web element has (so far) two inputs:
 
-##### ID:
+##### ID
+ID of the application to load.
 
-```html
-<dashboard-widget id="<id>"></dashboard-widget>
-```
-
-Where `<id>` is the identifier of the component to display.
-
-Putting id as attribute will allow the widget to load the data of the component, in order to display it, as in main system.
-
-ID API is avaible for the four types of widgets.
+##### Path
+Path to navigate to. Used by Angular router to navigate in the application.
 
 #### Outputs
+Web element has (so far) two outputs:
+
+##### filterActive$
+Indicates when a filter is used or not by the application.
 
 ##### pages
+Return list of application pages.
 
 Example:
 
@@ -78,7 +74,8 @@ widget.addEventListener(
   false
 );
 ```
-Where `widget` is a reference to the html element ( in that case, a `<application-widget>` tag).
+
+Where `widget` is a reference to the html element ( in that case, a `<apb-application>` tag).
 
 As in Angular, components can create events, and leave the possibility to other components to subscribe to them.
 In VanillaJS, it is possible to use EventListener in order to do so.
