@@ -80,3 +80,22 @@ Where `widget` is a reference to the html element ( in that case, a `<apb-applic
 As in Angular, components can create events, and leave the possibility to other components to subscribe to them.
 In VanillaJS, it is possible to use EventListener in order to do so.
 System is then able to interpret the event, based on its own logic.
+
+#### Global variables
+It is also possible to change some core elements, by setting global variables through javascript.
+
+##### Base Href
+Base href tells the browser where the script files will execute, and helpts the router to compose a navigation url.
+If you host the code at the root of your platform, you don't need to think about it.
+Nevertheless, if the platform is hosted at a certain path, you will need to change it.
+As the base href can change depending on the platform that hosts the web elements, we put the configuration in a global variable, instead of an input.
+
+Example:
+```
+<script>
+  window.baseHref = '/widgets/';
+</script>
+```
+
+Putting this code before you import the javascript to use App Builder's web elements will dynamically change the base href.
+All router urls will start with your root url + '/widgets/'.
