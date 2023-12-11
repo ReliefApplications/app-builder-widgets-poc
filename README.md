@@ -10,6 +10,8 @@ Web components presented by this project are created from this [repository](http
 
 POC is using Express handlebars.
 
+If you want to serve it locally, please switch to `local` branch.
+
 ## Usage
 
 ### Authentication
