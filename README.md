@@ -85,7 +85,7 @@ System is then able to interpret the event, based on its own logic.
 It is also possible to change some core elements, by setting global variables through javascript.
 
 ##### Base Href
-Base href tells the browser where the script files will execute, and helpts the router to compose a navigation url.
+Base href tells the browser where the script files will execute, and helps the router to compose a navigation url.
 If you host the code at the root of your platform, you don't need to think about it.
 Nevertheless, if the platform is hosted at a certain path, you will need to change it.
 As the base href can change depending on the platform that hosts the web elements, we put the configuration in a global variable, instead of an input.

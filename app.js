@@ -24,8 +24,8 @@ app.engine(
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", ".hbs");
 
-app.use("/widgets/public", express.static(path.join(__dirname, "public")));
-app.use("/widgets/public", express.static(path.join(__dirname, "app-builder")));
+app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(path.join(__dirname, "app-builder")));
 
 var index = require("./routes/index");
 

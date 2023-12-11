@@ -10,14 +10,14 @@ var settings = {
   // authority: process.env.AUTHORITY,
   // client_id: process.env.CLIENT_ID,
   // redirect_uri: process.env.REDIRECT_URI,
-  // authority: "https://id-dev.oortcloud.tech/auth/realms/oort",
-  // client_id: "oort-client",
-  // redirect_uri: "http://localhost:4200/",
+  authority: "https://id-dev.oortcloud.tech/auth/realms/oort",
+  client_id: "oort-client",
+  redirect_uri: "http://localhost:4200/",
   scope: "openid profile email offline_access",
-  authority:
-    "https://login.microsoftonline.com/f610c0b7-bd24-4b39-810b-3dc280afb590/v2.0",
-  client_id: "021202ac-d23b-4757-83e3-f6ecde12266b",
-  redirect_uri: "https://ems-safe-test.who.int/widgets/",
+  // authority:
+  //   "https://login.microsoftonline.com/f610c0b7-bd24-4b39-810b-3dc280afb590/v2.0",
+  // client_id: "021202ac-d23b-4757-83e3-f6ecde12266b",
+  // redirect_uri: "https://ems-safe-test.who.int/widgets/",
   response_type: "code",
   //scope:
   //  "openid profile email offline_access api://75deca06-ae07-4765-85c0-23e719062833/access_as_user",
