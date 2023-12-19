@@ -92,13 +92,20 @@
     <main id="widget" class="col h-100"></main>
   </div>
 </div>
+<!-- msal.min.js can be used in the place of msal.js; included msal.js to make debug easy -->
+<script
+  src="https://alcdn.msauth.net/browser/2.30.0/js/msal-browser.js"
+  integrity="sha384-o4ufwq3oKqc7IoCcR08YtZXmgOljhTggRwxP2CLbSqeXGtitAxwYaUln/05nJjit"
+  crossorigin="anonymous"
+></script>
 <script
   type="text/javascript"
-  src="/widgets/javascripts/oidc-client.min.js"
+  src="/widgets/javascripts/authConfig.js"
 ></script>
-<script>
-  // To capture app id in router var id = "{{id}}";
-</script>
+<script
+  type="text/javascript"
+  src="/widgets/javascripts/authRedirect.js"
+></script>
 <script type="text/javascript" src="/widgets/javascripts/main.js"></script>
 <script
   type="text/javascript"

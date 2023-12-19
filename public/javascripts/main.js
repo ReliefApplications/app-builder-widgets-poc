@@ -2,33 +2,6 @@ document
   .getElementById("login")
   .addEventListener("click", redirectToLogin, false);
 
-Oidc.Log.logger = console;
-Oidc.Log.level = Oidc.Log.INFO;
-
-// OIDC configuration
-var settings = {
-  // authority: process.env.AUTHORITY,
-  // client_id: process.env.CLIENT_ID,
-  // redirect_uri: process.env.REDIRECT_URI,
-  // authority: "https://id-dev.oortcloud.tech/auth/realms/oort",
-  // client_id: "oort-client",
-  // redirect_uri: "http://localhost:4200/",
-  scope: "openid profile email offline_access",
-  authority:
-    "https://login.microsoftonline.com/f610c0b7-bd24-4b39-810b-3dc280afb590/v2.0",
-  client_id: "021202ac-d23b-4757-83e3-f6ecde12266b",
-  redirect_uri: "https://ems-safe-test.who.int/widgets/",
-  response_type: "code",
-  //scope:
-  //  "openid profile email offline_access api://75deca06-ae07-4765-85c0-23e719062833/access_as_user",
-  filterProtocolClaims: true,
-  loadUserInfo: true,
-};
-var mgr = new Oidc.UserManager(settings);
-mgr.events.addUserLoaded(() => {
-  console.log('UserLoaded hit');
-});
-
 /**
  * Redirect to login
  * @param {*} e click event
@@ -36,14 +9,7 @@ mgr.events.addUserLoaded(() => {
 function redirectToLogin(e) {
   e.preventDefault();
 
-  mgr
-    .signinRedirect({ state: "some data" })
-    .then(function () {
-      console.log("signinRedirect done");
-    })
-    .catch(function (err) {
-      console.log(err);
-    });
+  signIn();
 }
 
 /**
@@ -166,34 +132,8 @@ function hideAppNavigation() {
   widget.classList.add("col");
 }
 
-/**
- * Handle the authentication response
- */
-function processLoginResponse() {
-  mgr
-    .signinRedirectCallback()
-    .then(function (user, bb) {
-      localStorage.setItem("idtoken", user.id_token);
-      document.getElementById("widget-navigation").style.visibility = "visible";
-      // openWidget('application', '653b7d6e45408fa9b0c85614');
-    })
-    .catch(function (err) {
-      console.log("Error completing auth code + pkce flow", err);
-    });
-}
-
-/**
- * Look out for a authentication response, then log it and handle it
- */
-if (window.location.href.indexOf("?") >= 0) {
-  console.log('login response');
-  processLoginResponse();
-}
-
-console.log(mgr);
-
 // There is an application to load
 if (id) {
-  openWidget('application', id);
+  openWidget("application", id);
   widget = document.querySelector("apb-application");
 }

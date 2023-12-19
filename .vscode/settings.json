@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/0956c944-254f-48eb-99ec-be3b80cb5abd/resourceGroups/EMSSAFE-D-WEU-RG01/providers/Microsoft.Web/sites/emssafe-d-widgetswebapp",
+  "appService.deploySubpath": "."
+}
